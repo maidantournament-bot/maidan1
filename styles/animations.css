@@ -1,0 +1,202 @@
+/* ============================================
+   MAIDAN - Animations
+   ============================================ */
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+@keyframes scanLine {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+@keyframes typeWriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-3px, 1px); }
+  20% { transform: translate(3px, -1px); }
+  30% { transform: translate(-1px, 2px); }
+  40% { transform: translate(1px, -2px); }
+  50% { transform: translate(0); }
+}
+@keyframes borderFlow {
+  0% { border-color: var(--accent-blue); box-shadow: 0 0 10px rgba(0,212,255,0.3); }
+  50% { border-color: var(--accent-orange); box-shadow: 0 0 10px rgba(255,107,0,0.3); }
+  100% { border-color: var(--accent-blue); box-shadow: 0 0 10px rgba(0,212,255,0.3); }
+}
+
+/* Stagger animations for cards */
+.step-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s both; }
+.step-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s both; }
+.step-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s both; }
+.step-card:nth-child(4) { animation: fadeInUp 0.6s ease 0.4s both; }
+.game-big-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s both; }
+.game-big-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s both; }
+.game-big-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s both; }
+.game-big-card:nth-child(4) { animation: fadeInUp 0.6s ease 0.4s both; }
+
+/* Hero animations */
+.hero-badge { animation: fadeInUp 0.5s ease 0.1s both; }
+.hero-title { animation: fadeInUp 0.6s ease 0.2s both; }
+.hero-sub { animation: fadeInUp 0.6s ease 0.3s both; }
+.hero-cta { animation: fadeInUp 0.6s ease 0.4s both; }
+.hero-stats { animation: fadeInUp 0.6s ease 0.5s both; }
+
+/* Auth card */
+.auth-card { animation: scaleIn 0.4s ease both; }
+.auth-left-content { animation: slideInLeft 0.5s ease 0.1s both; }
+
+/* Challenge cards */
+.challenge-card { animation: fadeInUp 0.4s ease both; }
+
+/* Pulse effect on active dot */
+.gbcard-live .dot::after {
+  content: '';
+  position: absolute;
+  inset: 0; border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+.gbcard-live { position: relative; }
+
+/* Neon text shimmer */
+.neon-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent-blue) 0%,
+    #fff 30%,
+    var(--accent-blue) 60%,
+    var(--accent-orange) 80%,
+    var(--accent-blue) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Particle styles */
+.particles {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100px) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+/* Scan line effect on cards */
+.scan-card {
+  position: relative; overflow: hidden;
+}
+.scan-card::after {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  opacity: 0;
+  animation: scanLine 3s ease-in-out infinite;
+  top: 0;
+}
+.scan-card:hover::after { opacity: 0.5; }
+
+/* Mobile nav slide */
+.nav-links.mobile-open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 70px; left: 0; right: 0;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+  z-index: 99;
+  animation: slideInLeft 0.3s ease;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-main);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Section reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glowing borders on hover */
+.glow-hover {
+  transition: box-shadow 0.3s;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(0,212,255,0.3), 0 0 40px rgba(0,102,255,0.1);
+}
+
+/* Number counter animation */
+.counting {
+  transition: all 0.1s;
+}
