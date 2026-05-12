@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 – Page Not Found | MAIDAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;800;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--grad:linear-gradient(135deg,#00d4ff,#0066ff);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Rajdhani',sans-serif;background:#070b14;color:#e8f0fe;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+    .bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+    @keyframes gridMove{from{transform:translate(0,0)}to{transform:translate(60px,60px)}}
+    .glow{position:fixed;width:400px;height:400px;background:rgba(0,102,255,0.12);border-radius:50%;filter:blur(80px);top:50%;left:50%;transform:translate(-50%,-50%);}
+    .content{position:relative;z-index:1;padding:2rem;}
+    .err-num{font-family:'Orbitron',sans-serif;font-size:clamp(6rem,20vw,10rem);font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;filter:drop-shadow(0 0 40px rgba(0,212,255,0.4));animation:pulse 2s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{filter:drop-shadow(0 0 40px rgba(0,212,255,0.4))}50%{filter:drop-shadow(0 0 60px rgba(0,212,255,0.7))}}
+    h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);font-weight:800;margin:1rem 0 0.5rem;}
+    p{color:#8899bb;font-size:1rem;margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto;}
+    .btn{display:inline-block;background:var(--grad);color:#fff;text-decoration:none;font-family:'Orbitron',sans-serif;font-size:0.85rem;font-weight:700;padding:0.9rem 2rem;border-radius:10px;letter-spacing:1.5px;transition:all 0.3s;margin:0.4rem;}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,212,255,0.4);}
+    .btn-outline{background:transparent;border:1px solid rgba(0,212,255,0.4);color:#00d4ff;}
+    .btn-outline:hover{background:rgba(0,212,255,0.1);}
+    .icon{font-size:3rem;margin-bottom:0.5rem;animation:bounce 1.5s ease-in-out infinite;}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="icon">🎮</div>
+    <div class="err-num">404</div>
+    <h1>Page Not Found</h1>
+    <p>Looks like this battle zone doesn't exist. Head back to the main arena!</p>
+    <div>
+      <a href="/" class="btn">🏠 Back to Home</a>
+      <a href="/" onclick="setTimeout(()=>showPage&&showPage('auth'),200)" class="btn btn-outline">⚔️ Join Battle</a>
+    </div>
+  </div>
+</body>
+</html>
